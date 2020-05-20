@@ -132,6 +132,7 @@
 
 32. Один из хороших способов установить uWSGI:
 	
+	sudo apt-get install libpcre3 libpcre3-dev
 	pip install uwsgi
 
 33. Проверка. Создаем файл test.py:
@@ -302,9 +303,15 @@ DATABASES = {
 60. Мы собрали всю цепочку, но настройка еще не закончена, идем дальше.
 
 61. Очень удобно все опции, с которыми мы запускаем uWSGI, указать в ini файле, а при запуске передавать только путь к этому файлу. Создаем файл my_site_uwsgi.ini в нашей папке deployment. Указываем в нем следующее содержимое:
+
+Но сначала установим плагин:
+	apt install uwsgi-plugin-python3
+	
+	
 	#mysite_uwsgi.ini 
 	[uwsgi]
-
+	
+	plugins		= python3
 	# Настройки, связанные с Django
 	# Корневая папка проекта (полный путь)
 	chdir           = /home/django/my_site
